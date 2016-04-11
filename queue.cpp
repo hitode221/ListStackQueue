@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+	\class Queue
+*/
 class Queue{
 	int *elements;
 	int length;
@@ -14,6 +17,7 @@ public:
 		length = _length;
 		elements = _elements;
 	}
+	/// \fn add element
 	void add(int element){
 		length++;
 		int *temp = new int[length];
@@ -23,7 +27,8 @@ public:
 		elements = new int[length];
 		elements = temp;
 	}
-	int del(){
+	/// \fn delete element
+	int deleteElement(){
 		if (length == 0) throw "error";
 		int element = elements[0];
 		length--;
@@ -34,9 +39,13 @@ public:
 		return element;
 
 	}
+	/// \fn get element
 	int get(){
 		if (length == 0) throw "error";
 		return elements[0];
+	}
+	~Queue(){
+		delete[] elements;
 	}
 };
 int main(){
@@ -51,7 +60,7 @@ int main(){
 			queue.add(data);
 		}
 		if (action == "get") cout << queue.get();
-		if (action == "del") queue.del();
+		if (action == "del") queue.deleteElement();
 	}
 	system("pause");
 	return 0;
