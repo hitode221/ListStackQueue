@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+	\class Class of stack
+*/
 class Stack{
 	int *elements;
 	int length;
@@ -13,6 +16,7 @@ public:
 		length = _length;
 		elements = _elements;
 	}
+	/// \fn add element
 	void add(int element){
 		length++;
 		int *temp = new int[length];
@@ -22,7 +26,8 @@ public:
 		elements = new int[length];
 		elements = temp;
 	}
-	int del(){
+	/// \fn delete element
+	int deleleElement(){
 		if (length == 0) throw "error";
 		int element = elements[length-1];
 		length--;
@@ -33,9 +38,13 @@ public:
 		return element;
 
 	}
+	/// \fn get element
 	int get(){
 		if (length == 0) throw "error";
 		return elements[length-1];
+	}
+	~Stack(){
+		delete[] elements;
 	}
 };
 
@@ -51,7 +60,7 @@ int main(){
 			stack.add(data);
 		}
 		if (action == "get") cout << stack.get();
-		if (action == "del") stack.del();
+		if (action == "del") stack.deleteElement();
 	}
 	system("pause");
 	return 0;
