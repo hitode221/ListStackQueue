@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
+/**
+	\class Element
+*/
 class Element{
 public:
 	int data;
@@ -9,6 +12,9 @@ public:
 		data = _data;
 	}
 };
+/**
+	\class List
+*/
 class List{
 		Element *first;
 		int size;
@@ -23,6 +29,7 @@ public:
 		first = temp;
 		size = 1;
 	}
+	/// \fn add element
 	void add(int element, int index){
 		if(index > size){
 			cout << "Error";
@@ -37,12 +44,14 @@ public:
 		}
 		Element *temp = new Element(element);
 		Element *iterator = first;
-		for (int i = 0; i < index-1; i++)
+		for (int i = 0; i < index-1; i++){
 			iterator = iterator->next;
+		}
 		if(index == size-1) temp->next = nullptr; 
 		else temp->next = iterator->next;
 		iterator->next = temp;
 	}
+	/// \fn delete element
 	void deleteElement(int index){
 		if(index > size-1){
 			cout << "Error";
@@ -54,18 +63,20 @@ public:
 			return;
 		}
 		Element *iterator = first;
-		for (int i = 0; i < index-1; i++)
+		for (int i = 0; i < index-1; i++){
 			iterator = iterator->next;
+		}
 		iterator->next = iterator->next->next;
 	}
+	/// \fn get element
 	int get(int index){
 		if(index > size-1){
-			cout << "Error";
-			return -1;
+			throw "Error";
 		}
 		Element *iterator = first;
-		for (int i = 0; i < index; i++)
+		for (int i = 0; i < index; i++){
 			iterator = iterator->next;
+		}
 		return iterator->data;
 	}
 };
