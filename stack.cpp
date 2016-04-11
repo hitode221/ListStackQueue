@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 /**
-	\class Class of stack
+	\class Stack
 */
 class Stack{
 	int *elements;
